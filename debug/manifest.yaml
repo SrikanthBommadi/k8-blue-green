@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: debug
+  namespace: project
+spec:
+  containers:
+  - name: debug
+    image: srikanth9959/debug:1.0.0

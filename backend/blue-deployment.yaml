@@ -7,6 +7,7 @@ metadata:
     app: backend
     tier: backend
     project: project
+    version: blue
 spec:
   # modify replicas according to your case
   replicas: 1
@@ -15,13 +16,18 @@ spec:
       app: backend
       tier: backend
       project: project
+      version: blue
   template:   #### this is the pod refernce name from which we have to take the refernce
     metadata:
       labels:
         app: backend
         tier: backend
         project: project
+        version: blue
     spec:
       containers:
       - name: nginx
         image: srikanth9959/backend:1.0.0
+        envFrom:
+        - configMapRef:
+            name: backend
