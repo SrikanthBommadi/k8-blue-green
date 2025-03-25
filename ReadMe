@@ -1,0 +1,9 @@
+blue/green deployment is a zero downtime strategy
+	for example if blue is running, we will create a new set of infra called green
+	we do some health checks or sanity testing based on project requirement
+	if green infra passed testing, we will switch routing from blue to green
+	now green is running version and blue is standby version
+	after few days, if any major defects found out, we can easily switch over to old version i.e blue
+	this process goes on
+
+    

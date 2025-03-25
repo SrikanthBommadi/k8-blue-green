@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: project
+  labels:
+    app: backend
+    tier: backend
+    project: project
+spec:
+  # modify replicas according to your case
+  replicas: 1
+  selector:     # this is to take the reference from above given labels
+    matchLabels:
+      app: backend
+      tier: backend
+      project: project
+  template:   #### this is the pod refernce name from which we have to take the refernce
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+        project: project
+    spec:
+      containers:
+      - name: nginx
+        image: joindevops/backend:1.0.0
