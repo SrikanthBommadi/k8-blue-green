@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend
+  namespace: project
+spec:
+  selector: # labels will used here for selecting the pod
+    app: backend
+    tier: backend
+    project: project
+    #version: blue
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080

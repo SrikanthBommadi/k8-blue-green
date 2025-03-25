@@ -24,4 +24,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: joindevops/backend:1.0.0
+        image: srikanth9959/backend:1.0.0
