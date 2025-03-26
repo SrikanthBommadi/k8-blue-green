@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-green
+  name: backend-2
   namespace: project
   labels:
     app: backend
     tier: backend
     project: project
-    version: green
+    version: blue
 spec:
   # modify replicas according to your case
   replicas: 1
@@ -16,18 +16,18 @@ spec:
       app: backend
       tier: backend
       project: project
-      version: green
+      version: blue
   template:   #### this is the pod refernce name from which we have to take the refernce
     metadata:
       labels:
         app: backend
         tier: backend
         project: project
-        version: green
+        version: blue
     spec:
       containers:
       - name: nginx
-        image: srikanth9959/backend:2.0.0
+        image: srikanth9959/backend:3.0.0
         envFrom:
         - configMapRef:
             name: backend
