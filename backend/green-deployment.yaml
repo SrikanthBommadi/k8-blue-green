@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-green
+  namespace: project
+  labels:
+    app: backend
+    tier: backend
+    project: project
+    version: green
+spec:
+  # modify replicas according to your case
+  replicas: 1
+  selector:     # this is to take the reference from above given labels
+    matchLabels:
+      app: backend
+      tier: backend
+      project: project
+      version: green
+  template:   #### this is the pod refernce name from which we have to take the refernce
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+        project: project
+        version: green
+    spec:
+      containers:
+      - name: nginx
+        image: srikanth9959/backend:1.0.0
+        envFrom:
+        - configMapRef:
+            name: backend
