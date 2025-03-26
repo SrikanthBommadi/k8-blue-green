@@ -1,14 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: backend
+  name: backend-preview
   namespace: project
 spec:
   selector: # labels will used here for selecting the pod
     app: backend
     tier: backend
     project: project
-    version: blue
+    version: green
   ports:
   - protocol: TCP
     port: 8080
