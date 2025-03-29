@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  namespace: project
+spec:
+  selector: # labels will used here for selecting the pod
+    app: frontend
+    tier: web
+    project: project
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: project
+  labels:
+    app: frontend
+    tier: web
+    project: project
+spec:
+  # modify replicas according to your case
+  replicas: 1
+  selector:     # this is to take the reference from above given labels
+    matchLabels:
+      app: frontend
+      tier: web
+      project: project
+  template:   #### this is the pod refernce name from which we have to take the refernce
+    metadata:
+      labels:
+        app: frontend
+        tier: web
+        project: project
+    spec:
+      containers:
+        - name: frontend-container
+          image: joindevops/frontend:1.2.0
+          resources:
+            requests:
+              memory: "68Mi"
+              cpu: "100m"
+            limits:  
+              memory: "128Mi"
+              cpu: "150m" 
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: nginx-volume
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              readOnly: true
+      volumes:
+        - name: nginx-volume
+          configMap:
+            name: nginx
+            items:
+              - key: nginx.conf
+                path: nginx.conf

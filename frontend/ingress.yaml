@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+
+kind: Ingress
+
+metadata:
+
+  name: frotend
+  namespace: project
+
+  annotations: 
+
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: ###have to give
+    alb.ingress.kubernetes.io/group.name: srikanthreddy
+spec:
+  ingressClassName: alb
+  rules:
+    - host: "project.srikanthaws.fun"
+      http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: app1
+              port:
+                number: 80
