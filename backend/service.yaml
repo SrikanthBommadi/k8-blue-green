@@ -8,7 +8,7 @@ spec:
     app: backend
     tier: backend
     project: project
-    version: green
+    version: blue2
   ports:
   - protocol: TCP
     port: 8080
